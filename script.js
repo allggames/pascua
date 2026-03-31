@@ -17,24 +17,21 @@
     const LOAD_MS = 1400;
 
     function createSplashStars() {
-      const container = document.getElementById('splash-stars');
-      if (!container) return;
-      container.innerHTML = '';
-      const emojis = ['🥚', '🐰', '🌸', '🍬'];
-      for (let i=0; i<EGG_COUNT; i++){
-        const s = document.createElement('div');
-        s.className = 'splash-star';
-        s.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-        s.style.left = (Math.random() * 100) + '%';
-        s.style.top = (Math.random() * 100) + '%';
-        const size = 15 + Math.round(Math.random()*20);
-        s.style.fontSize = size + 'px';
-        const dur = 4 + Math.random()*6;
-        s.style.animationDuration = dur.toFixed(2) + 's';
-        s.style.opacity = (0.4 + Math.random()*0.5).toFixed(2);
-        container.appendChild(s);
-      }
-    }
+  const container = document.getElementById('splash-stars');
+  if (!container) return;
+  container.innerHTML = '';
+  const emojis = ['🥚', '🐰', '🌸', '🍬'];
+  for (let i=0; i<30; i++){
+    const s = document.createElement('div');
+    s.className = 'splash-star';
+    s.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    // Esto asegura que se distribuyan por toda la pantalla
+    s.style.left = (Math.random() * 90 + 5) + '%';
+    s.style.top = (Math.random() * 90 + 5) + '%';
+    s.style.fontSize = (20 + Math.random()*20) + 'px';
+    s.style.animationDelay = (Math.random()*2) + 's';
+    container.appendChild(s);
+  }
 
     function placeBottomLogo() {
       const logo = document.getElementById('logo');
