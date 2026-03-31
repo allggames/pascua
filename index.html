@@ -4,103 +4,73 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Pascua - Elige un Huevo</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;800&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="dropping">
   <canvas id="sky"></canvas>
 
-  <div id="splash" aria-hidden="false">
-    <div id="splash-stars" aria-hidden="true"></div>
-
-    <div id="splash-content" role="dialog" aria-label="Pantalla de carga">
+  <div id="splash">
+    <div id="splash-stars"></div>
+    <div id="splash-content">
       <img id="logo2" src="images/logo2.png" alt="logo2" />
-      <div id="loading-wrap" aria-hidden="true">
-        <div id="loading-label">Buscando huevos de Pascua...</div>
+      <div id="loading-wrap">
+        <div id="loading-label">Buscando huevos...</div>
         <div id="loading-bar">
-          <div id="loading-progress" style="width:0%"></div>
+          <div id="loading-progress"></div>
         </div>
       </div>
     </div>
   </div>
 
-  <header class="page-header" role="banner">
+  <header class="page-header">
     <h1>Elige un Huevo de Pascua</h1>
   </header>
 
   <main>
     <img id="logo" src="images/logo.png" alt="logo" class="hide-until-bottom" />
-
-    <div class="stars" role="list" aria-label="Elige un huevo">
-      <button class="star final-1" data-index="0" aria-label="Huevo izquierdo" role="listitem">
-        <div class="star-inner" aria-hidden="true">
-          <svg viewBox="0 0 120 160" class="star-svg" xmlns="http://www.w3.org/2000/svg" overflow="visible">
-            <path class="halo" d=""></path>
-            <path class="body" d=""></path>
-            <path class="rim" d=""></path>
-          </svg>
-          <div class="ground-shadow" aria-hidden="true"></div>
+    <div class="stars">
+      <button class="star final-1" data-index="0">
+        <div class="star-inner">
+          <svg viewBox="0 0 120 160" class="star-svg"><path class="halo" d=""></path><path class="body" d=""></path><path class="rim" d=""></path></svg>
+          <div class="ground-shadow"></div>
         </div>
       </button>
-
-      <button class="star final-2" data-index="1" aria-label="Huevo central" role="listitem">
-        <div class="star-inner" aria-hidden="true">
-          <svg viewBox="0 0 120 160" class="star-svg" xmlns="http://www.w3.org/2000/svg" overflow="visible">
-            <path class="halo" d=""></path>
-            <path class="body" d=""></path>
-            <path class="rim" d=""></path>
-          </svg>
-          <div class="ground-shadow" aria-hidden="true"></div>
+      <button class="star final-2" data-index="1">
+        <div class="star-inner">
+          <svg viewBox="0 0 120 160" class="star-svg"><path class="halo" d=""></path><path class="body" d=""></path><path class="rim" d=""></path></svg>
+          <div class="ground-shadow"></div>
         </div>
       </button>
-
-      <button class="star final-3" data-index="2" aria-label="Huevo derecho" role="listitem">
-        <div class="star-inner" aria-hidden="true">
-          <svg viewBox="0 0 120 160" class="star-svg" xmlns="http://www.w3.org/2000/svg" overflow="visible">
-            <path class="halo" d=""></path>
-            <path class="body" d=""></path>
-            <path class="rim" d=""></path>
-          </svg>
-          <div class="ground-shadow" aria-hidden="true"></div>
+      <button class="star final-3" data-index="2">
+        <div class="star-inner">
+          <svg viewBox="0 0 120 160" class="star-svg"><path class="halo" d=""></path><path class="body" d=""></path><path class="rim" d=""></path></svg>
+          <div class="ground-shadow"></div>
         </div>
       </button>
     </div>
 
-    <div id="result" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div id="result" class="modal hidden">
       <div class="modal-content">
-        <h2 id="modal-title">¡Encontraste el premio!</h2>
+        <h2 id="modal-title">¡Ganaste!</h2>
         <p id="prize-text"></p>
-        <p id="prize-date" class="prize-date" aria-hidden="true"></p>
+        <p id="prize-date" class="prize-date"></p>
         <button id="close-btn" class="btn-primary">Cerrar</button>
       </div>
     </div>
-
-    <div id="confetti" aria-hidden="true"></div>
+    <div id="confetti"></div>
   </main>
 
-  <footer id="bottom-logo-container" aria-hidden="true"></footer>
+  <footer id="bottom-logo-container"></footer>
 
-  <svg width="0" height="0" style="position:absolute;pointer-events:none" aria-hidden="true">
+  <svg width="0" height="0" style="position:absolute;">
     <defs>
-      <filter id="haloBlur" x="-200%" y="-200%" width="500%" height="500%" filterUnits="userSpaceOnUse">
-        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="g"/>
-        <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
-
+      <filter id="haloBlur"><feGaussianBlur in="SourceGraphic" stdDeviation="10"/></filter>
       <linearGradient id="gradA" x1="0" x2="0" y1="0" y2="1">
-        <stop offset="0%" stop-color="#fff8d8"/>
-        <stop offset="60%" stop-color="#ffd75a"/>
-        <stop offset="100%" stop-color="#b27a12"/>
+        <stop offset="0%" stop-color="#fff8d8"/><stop offset="100%" stop-color="#b27a12"/>
       </linearGradient>
     </defs>
   </svg>
-
-  <audio id="claim-sound" preload="auto" aria-hidden="true">
-    <source src="sound/claim.mp3" type="audio/mpeg">
-  </audio>
-
   <script src="script.js"></script>
 </body>
 </html>
