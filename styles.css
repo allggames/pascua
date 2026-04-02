@@ -99,9 +99,10 @@ main { position: relative; z-index: 5; height: 100vh; display: flex; align-items
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 35vh; /* Ocupa la parte de abajo de la pantalla */
-  z-index: 2; /* La clave para que quede atrás de los huevos (z-index: 5) */
-  pointer-events: none; /* Evita que el usuario haga clic en el paisaje por error */
+  /* Magia responsiva: mínimo 120px, ideal 25% de la pantalla, máximo 250px */
+  height: clamp(120px, 25vh, 250px);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .landscape-svg {
