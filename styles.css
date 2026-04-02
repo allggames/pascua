@@ -40,8 +40,23 @@ body, html {
 .page-header { position: fixed; top: 60px; width: 100%; z-index: 10; pointer-events: none; }
 .page-header h1 { font-weight: 800; text-shadow: 0 4px 20px rgba(0,0,0,0.8); font-size: clamp(20px, 4vw, 32px); }
 
-main { position: relative; z-index: 5; height: 100vh; display: flex; align-items: center; justify-content: center; }
-.stars { display: flex; gap: clamp(1rem, 5vw, 3rem); align-items: center; }
+/* --- LAYOUT PRINCIPAL ACTUALIZADO --- */
+main {
+  position: relative;
+  z-index: 5;
+  height: 100vh;
+  display: flex;
+  flex-direction: column; /* Nos aseguramos de que el contenido se apile bien */
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 25vh; /* Le dejamos un "colchón" de espacio al paisaje de abajo */
+}
+
+.stars {
+  display: flex;
+  gap: clamp(1rem, 5vw, 3rem);
+  align-items: center;
+}
 
 .star {
   background: none; border: none; cursor: pointer;
@@ -94,12 +109,12 @@ main { position: relative; z-index: 5; height: 100vh; display: flex; align-items
 #bottom-logo-container img { width: 150px; }
 .hide-until-bottom { display: none; }
 
+/* --- PAISAJE DE PASCUA --- */
 #easter-landscape {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  /* Magia responsiva: mínimo 120px, ideal 25% de la pantalla, máximo 250px */
   height: clamp(120px, 25vh, 250px);
   z-index: 2;
   pointer-events: none;
@@ -111,33 +126,35 @@ main { position: relative; z-index: 5; height: 100vh; display: flex; align-items
   display: block;
 }
 
+/* --- ARREGLO INTEGRAL DEL LOGO ROTO Y CELULARES --- */
 
-/* --- ARREGLOS PARA CELULAR Y LAYOUT --- */
-
-/* 1. Sacamos el logo del medio para que no empuje los huevos */
 #logo {
   position: absolute;
-  top: 15%; /* Se acomoda arriba de los huevos */
+  top: 15%;
   left: 50%;
   transform: translateX(-50%);
   width: clamp(100px, 30vw, 150px);
+  display: none; /* Lo ocultamos para que el texto de error no rompa todo */
 }
 
-/* 2. Reglas específicas para pantallas de celulares */
+/* Esto hará que el logo solo aparezca cuando la imagen exista de verdad */
+#logo[src] {
+  display: block;
+}
+
 @media (max-width: 768px) {
-  
-  /* Achicamos el espacio entre los huevos */
   .stars {
-    gap: 3vw; 
+    gap: 1rem; 
   }
   
-  /* Achicamos los huevos para que entren los tres cómodos */
   .star {
     width: 28vw; 
   }
+
+  main {
+    padding-bottom: 20vh; /* Ajustamos el colchón para que el paisaje entre bien en el celu */
+  }
   
-  /* Hacemos el paisaje un poco más bajito. 
-     Esto evita que el SVG haga un "zoom" exagerado y nos corte al conejo y al canasto */
   #easter-landscape {
     height: 18vh; 
   }
