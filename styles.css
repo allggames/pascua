@@ -110,3 +110,35 @@ main { position: relative; z-index: 5; height: 100vh; display: flex; align-items
   height: 100%;
   display: block;
 }
+
+
+/* --- ARREGLOS PARA CELULAR Y LAYOUT --- */
+
+/* 1. Sacamos el logo del medio para que no empuje los huevos */
+#logo {
+  position: absolute;
+  top: 15%; /* Se acomoda arriba de los huevos */
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(100px, 30vw, 150px);
+}
+
+/* 2. Reglas específicas para pantallas de celulares */
+@media (max-width: 768px) {
+  
+  /* Achicamos el espacio entre los huevos */
+  .stars {
+    gap: 3vw; 
+  }
+  
+  /* Achicamos los huevos para que entren los tres cómodos */
+  .star {
+    width: 28vw; 
+  }
+  
+  /* Hacemos el paisaje un poco más bajito. 
+     Esto evita que el SVG haga un "zoom" exagerado y nos corte al conejo y al canasto */
+  #easter-landscape {
+    height: 18vh; 
+  }
+}
