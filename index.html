@@ -10,6 +10,33 @@
 <body class="dropping">
   <canvas id="sky"></canvas>
 
+  <div id="easter-landscape">
+    <svg viewBox="0 0 1000 300" preserveAspectRatio="none" class="landscape-svg">
+      <path d="M0,200 Q250,50 500,150 T1000,100 L1000,300 L0,300 Z" fill="#A8D5BA" />
+      
+      <path d="M0,300 L0,220 Q200,120 450,220 T1000,180 L1000,300 Z" fill="#81C784" />
+      
+      <g transform="translate(150, 160)">
+        <ellipse cx="12" cy="-8" rx="4" ry="15" fill="#FFF" transform="rotate(-15 12 -8)" />
+        <ellipse cx="28" cy="-8" rx="4" ry="15" fill="#FFF" transform="rotate(15 28 -8)" />
+        <ellipse cx="12" cy="-8" rx="2" ry="10" fill="#FFC8DD" transform="rotate(-15 12 -8)" />
+        <ellipse cx="28" cy="-8" rx="2" ry="10" fill="#FFC8DD" transform="rotate(15 28 -8)" />
+        <circle cx="20" cy="15" r="16" fill="#FFF" />
+        <ellipse cx="20" cy="35" rx="20" ry="25" fill="#FFF" />
+        <circle cx="2" cy="45" r="7" fill="#FFF" />
+      </g>
+
+      <g transform="translate(800, 180)">
+        <path d="M20,20 C20,-20 80,-20 80,20" fill="none" stroke="#8D6E63" stroke-width="6" stroke-linecap="round" />
+        <ellipse cx="35" cy="15" rx="10" ry="14" fill="#FFB7B2" transform="rotate(-20 35 15)"/>
+        <ellipse cx="65" cy="15" rx="10" ry="14" fill="#E2B6FF" transform="rotate(20 65 15)"/>
+        <ellipse cx="50" cy="12" rx="10" ry="15" fill="#FFFBCB" />
+        <path d="M10,20 L30,50 L70,50 L90,20 Z" fill="#A1887F" />
+        <path d="M10,20 L90,20" stroke="#8D6E63" stroke-width="4" stroke-linecap="round"/>
+      </g>
+    </svg>
+  </div>
+
   <div id="splash" aria-hidden="false">
     <div id="splash-stars" aria-hidden="true"></div>
     <div id="splash-content" role="dialog" aria-label="Pantalla de carga">
