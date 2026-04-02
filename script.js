@@ -125,7 +125,7 @@
   window.onresize = res; res();
 
   function animate() {
-    ctx.fillStyle = '#04101d'; ctx.fillRect(0,0,w,h);
+    ctx.fillStyle = '#87CEEB'; ctx.fillRect(0,0,w,h);
     stars.forEach(s => {
       s.o += 0.01;
       ctx.fillStyle = `rgba(255,255,255,${0.3 + Math.abs(Math.sin(s.o)) * 0.5})`;
