@@ -1,16 +1,95 @@
-body {
-  margin: 0; background: #04101d; color: white;
-  font-family: 'Lexend', sans-serif; overflow: hidden;
+:root {
+  --bg-top: #04101d;
+  --bg-bot: #071a2d;
+  --egg-yellow: #ffee58;
+  --egg-purple: #9c27b0;
+  --egg-pink: #e91e63;
+  --egg-orange: #ff9800;
+  --egg-green: #4caf50;
+  --modal-text: #2b1f00;
 }
-#sky { position: fixed; inset: 0; z-index: 0; }
-.page-header { position: fixed; top: 40px; width: 100%; text-align: center; z-index: 10; }
-main { display: flex; height: 100vh; align-items: center; justify-content: center; position: relative; z-index: 5; }
-.stars { display: flex; gap: 30px; }
-.star { background: none; border: none; cursor: pointer; width: 160px; transition: 0.3s; }
+
+* { box-sizing: border-box; }
+body, html {
+  margin: 0; padding: 0; width: 100%; height: 100%;
+  background-color: var(--bg-top);
+  color: #fff; font-family: "Lexend", sans-serif;
+  overflow: hidden; text-align: center;
+}
+
+#sky { position: fixed; inset: 0; z-index: 1; width: 100%; height: 100%; }
+
+/* Splash Screen */
+#splash {
+  position: fixed; inset: 0; z-index: 9999;
+  background-color: var(--bg-top);
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.5s ease;
+}
+#splash.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+#splash-stars { position: absolute; inset: 0; width: 100%; height: 100%; }
+.splash-star { position: absolute; animation: float 4s infinite ease-in-out; }
+
+#splash-content { position: relative; z-index: 10; text-align: center; }
+#logo2 { width: 220px; filter: drop-shadow(0 0 15px rgba(255,255,255,0.2)); }
+#loading-bar { width: 200px; height: 8px; background: rgba(255,255,255,0.1); margin: 20px auto; border-radius: 10px; overflow: hidden; }
+#loading-progress { height: 100%; width: 0%; background: var(--egg-yellow); transition: width 0.3s; }
+
+/* Juego */
+.page-header { position: fixed; top: 60px; width: 100%; z-index: 10; pointer-events: none; }
+.page-header h1 { font-weight: 800; text-shadow: 0 4px 20px rgba(0,0,0,0.8); font-size: clamp(20px, 4vw, 32px); }
+
+main { position: relative; z-index: 5; height: 100vh; display: flex; align-items: center; justify-content: center; }
+.stars { display: flex; gap: clamp(1rem, 5vw, 3rem); align-items: center; }
+
+.star {
+  background: none; border: none; cursor: pointer;
+  width: clamp(120px, 20vw, 220px); position: relative;
+  transition: transform 0.3s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
 .star:hover { transform: scale(1.1); }
-.star-svg { width: 100%; height: auto; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); }
-.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 100; }
+
+/* Diseño del Huevo Decorado */
+.star-svg { width: 100%; height: auto; overflow: visible; }
+.egg-base { fill: var(--egg-yellow); }
+.egg-halo { fill: #fff; filter: url(#haloBlur); opacity: 0.3; }
+.egg-purple-band { fill: var(--egg-purple); }
+.egg-wave-pink { stroke: var(--egg-pink); }
+.egg-wave-orange { stroke: var(--egg-orange); }
+.egg-dot { fill: var(--egg-green); }
+
+.ground-shadow {
+  position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
+  width: 80%; height: 15px; background: radial-gradient(rgba(0,0,0,0.5), transparent);
+  border-radius: 50%; filter: blur(10px);
+}
+
+/* Animaciones */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.dropping .star { transform: translateY(-120vh); transition: transform 0.9s ease-out; }
+.final-1 { transition-delay: 0.2s; }
+.final-2 { transform: scale(1.15); transition-delay: 0.1s; }
+.final-3 { transition-delay: 0.3s; }
+
+/* Modal */
+.modal {
+  position: fixed; inset: 0; z-index: 10000;
+  background: rgba(0,0,0,0.85);
+  display: none; align-items: center; justify-content: center;
+}
 .modal.show { display: flex; }
-.modal-content { background: white; color: black; padding: 30px; border-radius: 20px; text-align: center; }
-#splash { position: fixed; inset: 0; background: #04101d; z-index: 1000; display: flex; align-items: center; justify-content: center; }
-#splash.hidden { display: none; }
+.modal-content {
+  background: #fff; padding: 30px; border-radius: 20px;
+  text-align: center; color: var(--modal-text);
+  width: 90%; max-width: 380px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+.btn-primary { margin-top: 15px; padding: 10px 25px; border-radius: 10px; border: none; background: var(--egg-purple); color: #fff; font-weight: 800; cursor: pointer; }
+
+#bottom-logo-container { position: fixed; bottom: 20px; width: 100%; text-align: center; z-index: 10; }
+#bottom-logo-container img { width: 150px; }
+.hide-until-bottom { display: none; }
